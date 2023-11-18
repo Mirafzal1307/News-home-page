@@ -26,6 +26,7 @@
   grid-template-areas: "logo logo logo logo logo logo logo menu menu menu menu menu";
   justify-content: space-between;
 }
+
 .header_img {
   grid-area: logo;
 }
@@ -39,6 +40,27 @@
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
+}
+
+.header__menu-item:hover {
+  color: #ff6363;
+}
+.header-right {
+  grid-area: header-right;
+  display: flex;
+  align-items: center;
+}
+
+.header-right .header__hamburger {
+  margin-left: 20px;
+  cursor: pointer;
+  display: none;
+}
+.header-right .header__hamburger div {
+  width: 30px;
+  height: 2px;
+  margin: 6px 0;
+  background: #000;
 }
 
 .main {
@@ -151,6 +173,10 @@
   overflow: hidden;
   height: auto;
 }
+
+.footer__item:hover .footer__item-order  {
+  color: #ff6363;
+}
 .footer__item-img {
   height: 150px;
 }
@@ -178,7 +204,7 @@
   line-height: 24px;
 }
 
-@media (min-width: 320px) and (max-width: 1200px) {
+@media (min-width: 320px) and (max-width: 1000px) {
   .grid-container {
     display: grid;
     grid-template-areas:
@@ -190,13 +216,58 @@
     gap: 10px;
     padding: 10px;
   }
+
+  header {
+    padding: 0 20px;
+    z-index: 1 !important;
+    grid-template-areas: "logo logo logo logo logo logo logo logo logo logo header-right header-right" !important;
+  }
+  header .header-right .header__hamburger {
+    display: block;
+    grid-column: span 4;
+  }
+  header .header__menu {
+    margin: 0;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    background-color: #fff;
+    padding: 30px;
+    transition: 0.3s;
+    text-align: center;
+    z-index: -1;
+  }
+  header .header__menu.active {
+    top: 90px;
+  }
+  header ul {
+    display: block;
+    flex-direction: column;
+    align-items: start;
+  }
+  .header__menu-item {
+    padding : 10px 10px ;
+  }
+  .main__context {
+    grid-template-areas: "main__context-title" 'main__context-text';
+  }
+  .main__title {
+    font-size: 50px;
+  }
+  .main__button {
+    margin-top: 25px;
+  }
+
   .footer {
     grid-area: footer;
     display: grid;
     grid-template-areas: "one" "two" "three";
     gap: 50px;
   }
-  .header__menu-item {
-    display: none;
+  .footer__item {
+    justify-content: flex-start;
   }
+  
 }
